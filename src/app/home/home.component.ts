@@ -7,8 +7,8 @@ import { AppserviceService } from '../service/appservice.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-  pollList = []
-  constructor(private getpollListservice: AppserviceService) {}
+  // pollList = []
+  constructor(public getpollListservice: AppserviceService) {}
   ngOnInit() {
     this.getpollList();
   }
@@ -18,8 +18,8 @@ export class HomeComponent {
   }
 
   async getpollList() {
-    const data = await this.getpollListservice.getPollList();
-    this.pollList = data.data
+    this.getpollListservice.getPollList();
+  
   }
 }
 

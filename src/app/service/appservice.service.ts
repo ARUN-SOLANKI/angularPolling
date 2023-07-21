@@ -7,7 +7,7 @@ export class AppserviceService {
 
   baseUrl = `https://etechpolltesting.onrender.com`
 
-
+  pollList = []
   constructor() { }
 
  options = {
@@ -56,8 +56,8 @@ async getPollList(){
   const data = await fetch(`${this.baseUrl}/list_polls`).then((res)=>{
     return res.json()
    })
-   console.log(data)
-   return data
+   this.pollList = data.data
+   return data.data
 }
 async getUserList(){
   const data = await fetch(`${this.baseUrl}/list_users`).then((res)=>{
