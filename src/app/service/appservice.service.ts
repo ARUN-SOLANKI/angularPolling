@@ -56,7 +56,6 @@ async getPollList(){
   const data = await fetch(`${this.baseUrl}/list_polls`).then((res)=>{
     return res.json()
    })
-   this.pollList = data.data
    return data.data
 }
 async getUserList(){
@@ -70,7 +69,7 @@ async deletePoll(id : string){
     return res.json()
    })
    if(data.error == 0){
-    this.getPollList()
+    this.pollList = await this.getPollList()
    }
    return data
 }
@@ -79,7 +78,7 @@ async deletePollOption(id : string , option:string){
     return res.json()
    })
    if(data.error == 0){
-    this.getPollList()
+    this.pollList = await this.getPollList()
    }
    return data
 }
@@ -90,7 +89,7 @@ async addNewPollOption(id : string , option:string){
    })
    console.log(data)
    if(data.error == 0){
-    this.getPollList()
+    this.pollList = await this.getPollList()
    }
    return data
 }
@@ -100,7 +99,7 @@ async updatePollTitle(id : string , title:string){
     return res.json()
    })
    if(data.error == 0){
-    this.getPollList()
+    this.pollList = await this.getPollList()
    }
    return data
 }
@@ -110,7 +109,7 @@ async createVote(id:string,option:string){
     return res.json()
    })
    if(data.error == 0){
-    this.getPollList()
+    this.pollList = await this.getPollList()
    }
    return data
 }

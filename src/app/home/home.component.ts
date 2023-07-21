@@ -18,8 +18,8 @@ export class HomeComponent {
   }
 
   async getpollList() {
-    this.getpollListservice.getPollList();
-  
+    const data = await this.getpollListservice.getPollList();
+    this.getpollListservice.pollList = data
   }
 }
 
